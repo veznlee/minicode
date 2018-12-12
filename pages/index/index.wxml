@@ -11,6 +11,7 @@
     <text class="user-motto">{{motto}}</text>
     <view bindtap="viewTap"> click me </view>
     <view bindtap="ToBaseView"> ToBaseView </view>
+    api:https://developers.weixin.qq.com/miniprogram/dev/api/
     踩坑指南：https://blog.csdn.net/xiehuimx/article/details/52005355
   </view>
 </view>
