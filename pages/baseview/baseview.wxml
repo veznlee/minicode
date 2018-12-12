@@ -1,0 +1,64 @@
+<view class="view-container">
+  <text class="title">循环</text>
+  <view wx:for="{{array}}"> {{index}}: {{item.message}} </view>
+  <text class="title">指定别名</text>
+  <view wx:for="{{array}}" wx:for-index="idx" wx:for-item="itemName">
+    {{idx}}: {{itemName.message}}
+  </view>
+  <!-- <text class="title">循环嵌套</text>
+  <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="i">
+    <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="j">
+      <view wx:if="{{i <= j}}"> {{i}} * {{j}} = {{i * j}} </view>
+    </view>
+  </view> -->
+  <view id="tapTest" data-hi="WeChat" bindtap="tapName"> Click me! </view>
+  <view class="block" bindtap="tapBlock">
+    <text class="title" bindtap="tapName">bind事件绑定不会阻止冒泡事件向上冒泡</text>
+  </view>
+  <view class="block" bindtap="tapBlock">
+    <text class="title" catchtap="tapName">catch事件绑定可以阻止冒泡事件向上冒泡</text>
+  </view>
+  <view class="block" bindtap="tapBlock">
+    <text class="title" catchtap="tapName">自基础库版本 1.5.0 起，触摸类事件支持捕获阶段。捕获阶段位于冒泡阶段之前，且在捕获阶段中，事件到达节点的顺序与冒泡阶段恰好相反。需要在捕获阶段监听事件时，可以采用capture-bind、capture-catch关键字，后者将中断捕获阶段和取消冒泡阶段。</text>
+  </view>
+
+
+  <text class="title">import</text>
+  <view class="block">
+    import 有作用域的概念，即只会 import 目标文件中定义的 template，而不会 import 目标文件 import 的 template。
+    如：C import B，B import A，在C中可以使用B定义的template，在B中可以使用A定义的template，但是C不能使用A定义的template。
+    <import src="item.wxml" /> 
+    <template is="item" data="{{text: 'forbar'}}" />
+  </view>
+
+  <text class="title">include</text>
+  <view class="block">
+    include 可以将目标文件除了 <template/> <wxs/> 外的整个代码引入，相当于是拷贝到 include 位置
+    <include src="include.wxml" />
+  </view>
+
+  <text class="title">wxs 的使用</text>
+  <view class="block">
+
+    <wxs src="./../tools.wxs" module="tools" /> <view> {{tools.msg}} </view>
+    <view> {{tools.BAR(tools.FOO)}} </view>
+
+
+    <!-- 下面的 getMax 函数，接受一个数组，且返回数组中最大的元素的值 -->
+    <wxs module="m1">
+      var getMax = function(array) { 
+        var max = undefined; 
+        for (var i = 0; i < array.length; ++i) { 
+          max = max === undefined ? array[i] : (max >= array[i] ? max : array[i]); 
+        } 
+        return max; 
+      } 
+      module.exports.getMax = getMax;
+    </wxs>
+
+    <!-- 调用 wxs 里面的 getMax 函数，参数为 page.js 里面的 array -->
+    <view> {{m1.getMax(arrayNum)}} </view>
+  </view>
+
+
+</view>

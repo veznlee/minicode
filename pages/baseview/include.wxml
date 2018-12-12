@@ -1,0 +1,6 @@
+<view>
+  <template name="item">
+    <text class="title">{{text}}</text>
+  </template>
+  <text>我是include进来的内容</text>
+</view>

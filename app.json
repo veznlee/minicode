@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/baseview/baseview",
+    "pages/scrollview/scrollview",
+    "pages/scroll/scroll",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#268dcd",
+    "navigationBarTitleText": "测试小程序",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  }
+}
